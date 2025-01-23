@@ -1,0 +1,35 @@
+-- Create a database for the chatbot
+CREATE DATABASE chatbot_db;
+
+-- Switch to the chatbot_db database
+USE chatbot_db;
+
+-- Create a table to store the messages
+CREATE TABLE messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,         -- Primary key, automatically incremented
+    user_message TEXT NOT NULL,                -- User's message
+    bot_response TEXT NOT NULL,               -- Bot's response
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Timestamp for when the message is saved
+);
+
+-- Optionally, you can insert some sample data into the table to test
+INSERT INTO messages (user_message, bot_response) VALUES
+('Hello', 'Bot: olleH'),
+('How are you?', 'Bot: ?uoy era woH');
+
+
+
+
+
+# Database connection function (for MySQL)
+def get_db_connection():
+    if use_mysql:
+        conn = mysql.connector.connect(
+            host="localhost",        # MySQL server host
+            user="root",             # MySQL username
+            password="password",     # MySQL password
+            database="chatbot_db"    # The database created above
+        )
+        return conn
+    else:
+        return None
