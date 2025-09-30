@@ -76,3 +76,4 @@ async def get_history():
     else:
         return {"history": chat_history}
 
+
